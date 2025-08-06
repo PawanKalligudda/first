@@ -1,0 +1,24 @@
+name: CI for GitHub Actions
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Lint
+        run: eslint --ext .jsx --fix src     
+      
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing the code
+        run: vitest run
+  
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building the project
+        run: vite build
