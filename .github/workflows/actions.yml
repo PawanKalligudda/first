@@ -16,8 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Testing the code
-        run: npm run test
-  
+        run: |
+          pwd
+          ls
+          npm run test
+
   build:
     needs: test
     runs-on: ubuntu-latest
