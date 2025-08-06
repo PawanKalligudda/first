@@ -17,7 +17,9 @@ jobs:
     steps:
       - name: Testing the code
         run: |
+          find / -name package.json
           cd /home/runner/work/first
+
           npm run test
 
   build:
